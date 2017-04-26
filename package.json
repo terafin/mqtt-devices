@@ -1,0 +1,21 @@
+{
+    "name": "mqtt-devices",
+    "version": "0.0.1",
+    "description": "MQTT device manager",
+    "license": "MIT",
+    "main": "mqtt-devices.js",
+    "repository": {
+        "url": "https://github.com/terafin/mqtt-devices"
+    },
+    "scripts": {
+        "start": "node mqtt-devices.js"
+    },
+    "dependencies": {
+        "syslog": "^0.1.1",
+        "redis": "^2.7.1",
+        "mqtt": "^2.6.2"
+    },
+    "engines": {
+        "node": ">=4"
+    }
+}
