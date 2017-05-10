@@ -1,5 +1,7 @@
-const logging = require('./logging.js')
 const mqtt = require('mqtt')
+const logging = require('./logging.js')
+const _ = require('lodash')
+
 
 var publish_map = {}
 
@@ -12,17 +14,47 @@ function fix_name(str) {
 
 if (mqtt.MqttClient.prototype.smartPublish == null) mqtt.MqttClient.prototype.smartPublish = function(topic, message) {
     if (topic === null) {
-        logging.warn('empty client or topic passed into mqtt_helpers.publish')
+        logging.error('empty client or topic passed into mqtt_helpers.publish')
         return
     }
     topic = fix_name(topic)
 
-    logging.log(' ' + topic + ':' + message)
+    logging.info(' ' + topic + ':' + message)
     if (publish_map[topic] !== message) {
         publish_map[topic] = message
-        logging.log(' => published!')
+        logging.debug(' => published!')
         this.publish(topic, message)
     } else {
-        logging.log(' * not published')
+        logging.debug(' * not published')
     }
+}
+
+const host = process.env.MQTT_HOST
+
+if (mqtt.setupClient == null) mqtt.setupClient = function(connectedCallback, disconnectedCallback) {
+    if (_.isNil(host)) {
+        logging.warn('MQTT_HOST not set, aborting')
+        process.abort()
+    }
+
+    // Setup MQTT
+    var client = mqtt.connect(host)
+
+    // MQTT Observation
+
+    client.on('connect', () => {
+        logging.info('MQTT Connected')
+        if (!_.isNil(connectedCallback))
+            connectedCallback()
+    })
+
+    client.on('disconnect', () => {
+        logging.error('MQTT Disconnected, reconnecting')
+        client.connect(host)
+
+        if (!_.isNil(disconnectedCallback))
+            disconnectedCallback()
+    })
+
+    return client
 }
