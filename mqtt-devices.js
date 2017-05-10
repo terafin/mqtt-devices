@@ -11,13 +11,6 @@ const redisPort = process.env.REDIS_PORT
 const redisDB = process.env.REDIS_DATABASE
 const config_path = process.env.TRANSFORM_CONFIG_PATH
 
-const syslogHost = process.env.SYSLOG_HOST
-const syslogPort = process.env.SYSLOG_PORT
-
-// Set up Logging
-logging.set_enabled(true)
-logging.setRemoteHost(syslogHost, syslogPort)
-
 const redis = Redis.createClient({
     host: redisHost,
     port: redisPort,
@@ -52,7 +45,7 @@ redis.on('connect', function() {
 })
 
 config.on('config-loaded', () => {
-    logging.log('config-loaded!')
+    logging.log('config-loaded')
     redis.flushdb()
 
     config.deviceIterator(function(device_id, device) {
