@@ -11,13 +11,13 @@
         "start": "node mqtt-devices.js"
     },
     "dependencies": {
-        "lodash": "^4.17.4",
-        "winston": "^2.3.1",
-        "winston-splunk-httplogger": "^1.2.2",
         "js-yaml": "^3.8.3",
-        "watch": "^1.0.2",
+        "lodash": "^4.17.4",
+        "mqtt": "^2.6.2",
         "redis": "^2.7.1",
-        "mqtt": "^2.6.2"
+        "watch": "^1.0.2",
+        "winston": "^2.3.1",
+        "winston-splunk-httplogger": "^1.2.2"
     },
     "engines": {
         "node": ">=4"
