@@ -3,6 +3,7 @@ FROM node:6-alpine
 RUN mkdir -p /usr/node_app
 COPY . /usr/node_app
 WORKDIR /usr/node_app
-RUN npm install --production
+RRUN apk add --no-cache git
+UN npm install --production
 
 CMD ["npm", "start"]

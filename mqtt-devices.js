@@ -1,11 +1,11 @@
 // Requirements
 const Redis = require('redis')
-const logging = require('./homeautomation-js-lib/logging.js')
-const config = require('./homeautomation-js-lib/config_loading.js')
+const logging = require('homeautomation-js-lib/logging.js')
+const config = require('homeautomation-js-lib/config_loading.js')
 const _ = require('lodash')
 
-require('./homeautomation-js-lib/devices.js')
-require('./homeautomation-js-lib/redis_helpers.js')
+require('homeautomation-js-lib/devices.js')
+require('homeautomation-js-lib/redis_helpers.js')
 
 // Config
 const configPath = process.env.CONFIG_PATH
