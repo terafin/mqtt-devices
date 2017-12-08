@@ -19,7 +19,7 @@ const redis = Redis.setupClient(function() {
     config.load_path(configPath)
 
     config.on('config-loaded', () => {
-        logging.log('config-loaded')
+        logging.info('config-loaded')
         redis.flushdb()
 
         config.deviceIterator(function(device_id, device) {
