@@ -11,19 +11,19 @@ require('homeautomation-js-lib/redis_helpers.js')
 const configPath = process.env.CONFIG_PATH
 
 if (_.isNil(configPath)) {
-    logging.warn('CONFIG_PATH not set, not starting')
-    process.abort()
+	logging.warn('CONFIG_PATH not set, not starting')
+	process.abort()
 }
 
 const redis = Redis.setupClient(function() {
-    config.load_path(configPath)
+	config.load_path(configPath)
 
-    config.on('config-loaded', () => {
-        logging.info('config-loaded')
-        redis.flushdb()
+	config.on('config-loaded', () => {
+		logging.info('config-loaded')
+		redis.flushdb()
 
-        config.deviceIterator(function(device_id, device) {
-            redis.set(device.topic, device.name)
-        })
-    })
+		config.deviceIterator(function(device_id, device) {
+			redis.set(device.topic, device.name)
+		})
+	})
 })
