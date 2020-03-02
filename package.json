@@ -1,21 +1,21 @@
 {
-    "name": "mqtt-devices",
-    "version": "0.0.1",
-    "description": "MQTT device manager",
-    "license": "MIT",
-    "main": "mqtt-devices.js",
-    "repository": {
-        "url": "https://github.com/terafin/mqtt-devices"
-    },
-    "scripts": {
-        "start": "node mqtt-devices.js"
-    },
-    "dependencies": {
-        "homeautomation-js-lib": "https://github.com/terafin/homeautomation-js-lib.git",
-        "lodash": "^4.17.15",
-        "redis": "^2.8.0"
-    },
-    "engines": {
-        "node": ">=4"
-    }
+  "name": "mqtt-devices",
+  "version": "0.0.1",
+  "description": "MQTT device manager",
+  "license": "MIT",
+  "main": "mqtt-devices.js",
+  "repository": {
+    "url": "https://github.com/terafin/mqtt-devices"
+  },
+  "scripts": {
+    "start": "node mqtt-devices.js"
+  },
+  "dependencies": {
+    "homeautomation-js-lib": "https://github.com/terafin/homeautomation-js-lib.git",
+    "lodash": "^4.17.15",
+    "redis": "^2.8.0"
+  },
+  "engines": {
+    "node": ">=4"
+  }
 }
